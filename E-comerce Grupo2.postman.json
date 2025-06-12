@@ -1,0 +1,2155 @@
+{
+	"info": {
+		"_postman_id": "fc0e849d-dbf7-46c2-91d7-27d4f536e5a2",
+		"name": "E-comerce Grupo2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44892990"
+	},
+	"item": [
+		{
+			"name": "ACESSO LIVRE",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/login?email=mariaaragao2742@gmail.com&senha=Maria@2742",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "mariaaragao2742@gmail.com"
+								},
+								{
+									"key": "senha",
+									"value": "Maria@2742"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Lnauan Bragança\",\r\n    \"cpf\": \"203.968.415-89\",\r\n    \"dataDeNascimento\": \"1986-05-17\",\r\n    \"telefone\": \"(91 99861-3407\",\r\n    \"cep\": \"455.00000\",\r\n    \"numero\": \"75\",\r\n    \"email\": \"maria.e.aragao10@aluno.senai.br\",\r\n    \"senha\": \"Maria@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/cadastro",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"cadastro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativação da conta",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Kauê dos Santos Leal\",\r\n  \"cpf\": \"138.632.997-52\",\r\n  \"dataDeNascimento\": \"2005-05-08\",\r\n  \"telefone\": \"(21) 97035-5091\",\r\n  \"cep\": \"25960-531\",\r\n  \"numero\": \"1135\",\r\n  \"email\": \"kauesanto2019@gmail.com\",\r\n  \"senha\": \"Louve177@\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/ativarConta?email=kauesantos2019@gmail.com&token=eyJhbGciOiJIUzI1NiJ9.eyJob3JhR2VyYWNhbyI6MTc0ODkxMDkyODEwNiwiaWF0IjoxNzQ4OTEwOTI4fQ.5wjJnXbg0PcRKJ-yoRzd16iL2vfSV6jH23lZEyUJ-VE",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"ativarConta"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "kauesantos2019@gmail.com"
+								},
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJob3JhR2VyYWNhbyI6MTc0ODkxMDkyODEwNiwiaWF0IjoxNzQ4OTEwOTI4fQ.5wjJnXbg0PcRKJ-yoRzd16iL2vfSV6jH23lZEyUJ-VE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista de produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/produtos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista produtos na Promoção",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/produtos/promocoes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"promocoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar foto do produto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Response</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>Response content is an image (image/jpeg)</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.text()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/produtos/1/foto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"1",
+								"foto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar produto por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/produtos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todas as categórias",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5NTgwNjQsImV4cCI6MTc0OTA0NDQ2NH0.SK5Z8atViU-Eq2GVS8NV_gSCuJ5CBzAHKbqBrW7j81w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"ROUPA INFANTIL\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/categorias",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CLIENTE - LOGADO",
+			"item": [
+				{
+					"name": "COMPRAS",
+					"item": [
+						{
+							"name": "Adicionar produto no pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/adicionar?idProduto=2&quantidade=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"adicionar"
+									],
+									"query": [
+										{
+											"key": "idProduto",
+											"value": "2"
+										},
+										{
+											"key": "quantidade",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Finalizar pedido - produtos entram em rota de envio",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/finalizar",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"finalizar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Diminuir quantidade de produto no pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/diminuir/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"diminuir",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Aumentar quantidade de produto no pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/aumentar/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"aumentar",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancelar entrega de pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/cancelar/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"cancelar",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir item do pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/excluir/item/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"excluir",
+										"item",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista pedidos em rota de entrega",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/listar-pedidos-entregues",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"listar-pedidos-entregues"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar pedidos entregues",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/listar-pedidos-finalizados",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"listar-pedidos-finalizados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista pedidos cancelados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/listar-pedidos-cancelados",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"listar-pedidos-cancelados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pedido atual",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/listar-pedidos-andamento",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"listar-pedidos-andamento"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cliente atualiza parcialmente o próprio cadastro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJrYXVlc2FudG9zMjAxOUBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTIzNTksImV4cCI6MTc0ODk5ODc1OX0.0hXXAFz_jUAgAzi-O4UBKeuHOR1EQqD5xEs9PzBuwc0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/atualizacaoParcial",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"atualizacaoParcial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente atualiza o próprio cadastro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MjM0MTMsImV4cCI6MTc0OTAwOTgxM30.nsF5lmfyveyYoRpHOMA8wp7OYAF2FurSyz7-uZ-EET0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Maria S. Aragão\",\r\n  \"cpf\": \"136.531.457-05\",\r\n  \"dataDeNascimento\": \"2004-04-09\",\r\n  \"cargo\": \"PRESIDENTE\",\r\n  \"genero\": \"FEMININO\",\r\n  \"telefone\": \"(21) 95874-6825\",\r\n  \"email\": \"maria@gmail.com\",\r\n  \"senha\": \"Maria@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/atualizacaoParcial",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"atualizacaoParcial"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FUNCIONÁRIO",
+			"item": [
+				{
+					"name": "ACESSOS PRIVADOS DO FUNCIONÁRIO",
+					"item": [
+						{
+							"name": "Funcionário atualiza o próprio cadastro",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MjM0MTMsImV4cCI6MTc0OTAwOTgxM30.nsF5lmfyveyYoRpHOMA8wp7OYAF2FurSyz7-uZ-EET0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Maria S. Aragão\",\r\n  \"cpf\": \"136.531.457-07\",\r\n  \"dataDeNascimento\": \"2004-04-09\",\r\n  \"cargo\": \"PRESIDENTE\",\r\n  \"genero\": \"FEMININO\",\r\n  \"telefone\": \"(21) 95874-6826\",\r\n  \"email\": \"maria@gmail.com\",\r\n  \"senha\": \"Maria@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/funcionario/atualizarCadastro",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"atualizarCadastro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Funcionário atualiza parcialmente  o próprio  cadastro",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Njk5NjAsImV4cCI6MTc0OTA1NjM2MH0.2cRwIMyZpIxmawSFz1r6zjTJ9Q5geCuLACTRcaTWgNY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Maria S. Aragão\",\r\n  \"cpf\": \"158.961.575-22\",\r\n  \"dataDeNascimento\": \"2025-06-03\",\r\n  \"genero\": \"FEMININO\",\r\n  \"telefone\": \"(20) 92143-3002\",\r\n  \"cargo\": \"PRESIDENTE\",\r\n  \"email\": \"mariaaragao2742@gmail.com\",\r\n  \"senha\": \"Maria@2742\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/funcionario/atualizacaoParcial",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"atualizacaoParcial"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ACESSO BAIXO",
+					"item": [
+						{
+							"name": "Listar todos os clientes",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Nzk3ODAsImV4cCI6MTc0OTA2NjE4MH0.1wkZIYg8d-9hPU8K2hlMd-ri-wjXeY9q93d_FN8MATY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/cliente/listarClientes",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"listarClientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar clientes pelo nome",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Nzk3ODAsImV4cCI6MTc0OTA2NjE4MH0.1wkZIYg8d-9hPU8K2hlMd-ri-wjXeY9q93d_FN8MATY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/cliente/buscarPorNome/a",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"buscarPorNome",
+										"a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar cliente pelo ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Nzk3ODAsImV4cCI6MTc0OTA2NjE4MH0.1wkZIYg8d-9hPU8K2hlMd-ri-wjXeY9q93d_FN8MATY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/cliente/buscarPorId/13",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"buscarPorId",
+										"13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar pedidos do cliente",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Nzk3ODAsImV4cCI6MTc0OTA2NjE4MH0.1wkZIYg8d-9hPU8K2hlMd-ri-wjXeY9q93d_FN8MATY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/pedidos-por-cliente/4",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"pedidos-por-cliente",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTE1NzQwLCJleHAiOjE3NDkwMDIxNDB9.Sa2QM9vv3uirOPp052SFHLh4sUnJehEsXCVvBrYZs3I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Mariana Almeida filha\",\r\n  \"cpf\": \"544.888.241-97\",\r\n  \"dataDeNascimento\": \"2025-06-03\",\r\n  \"telefone\": \"(59)99198-5044\",\r\n  \"cep\": \"52381-799\",\r\n  \"numero\": \"S/N\",\r\n  \"email\": \"xoliveira@bol.com.br\",\r\n  \"senha\": \"4Mw4?d4K<`_Ty#LT.0 ;v3t2v=`yKX^kuS3\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/cliente/atualizarCliente/13",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"atualizarCliente",
+										"13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ativar conta de cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Nzk3ODAsImV4cCI6MTc0OTA2NjE4MH0.1wkZIYg8d-9hPU8K2hlMd-ri-wjXeY9q93d_FN8MATY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/cliente/ativarContaCliente/14",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"ativarContaCliente",
+										"14"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Desativar conta de cliente",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/cliente/desativarContaCliente/13",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"desativarContaCliente",
+										"13"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro de Categoria",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Nzk3ODAsImV4cCI6MTc0OTA2NjE4MH0.1wkZIYg8d-9hPU8K2hlMd-ri-wjXeY9q93d_FN8MATY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"ROUPAS\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/categorias",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro de produto",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/produtos",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"produtos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista todos os pedidos finalizados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTU5NTY4LCJleHAiOjE3NDkwNDU5Njh9.RkxjlmG6ixTptLd0koleAIVId2MyIqUPfn1OV-V_BZ0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n  \"nome\": \"Bonê de Bebê\",\n  \"descricao\": \"fofo\",\n  \"idCategoria\": 1,\n  \"preco\": 20.50,\n\n  \"estoque\": 10,\n  \"fabricante\": \"China S.A\"\n\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/bone.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/finalizados",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"finalizados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista todos os pedidos em entrega",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTE1NzQwLCJleHAiOjE3NDkwMDIxNDB9.Sa2QM9vv3uirOPp052SFHLh4sUnJehEsXCVvBrYZs3I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/em-entrega",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"em-entrega"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista todos os pedidos cancelados",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTE1NzQwLCJleHAiOjE3NDkwMDIxNDB9.Sa2QM9vv3uirOPp052SFHLh4sUnJehEsXCVvBrYZs3I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/cancelados",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"cancelados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todos os pedidos em andamento",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTE1NzQwLCJleHAiOjE3NDkwMDIxNDB9.Sa2QM9vv3uirOPp052SFHLh4sUnJehEsXCVvBrYZs3I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/pedidos/listar-pedidos-andamento",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"listar-pedidos-andamento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir um produto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/produtos/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"produtos",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualização completa de produto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5NTgwNjQsImV4cCI6MTc0OTA0NDQ2NH0.SK5Z8atViU-Eq2GVS8NV_gSCuJ5CBzAHKbqBrW7j81w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "produto",
+											"value": "{\n\n        \"nome\": \"Tiara de Bebê\",\n        \"descricao\": \"fofo\",\n        \"idCategoria\": 1,\n        \"preco\": 25.50,\n        \"precoPromocional\": 20.00,\n        \"estoque\": 5,\n        \"fabricante\": \"China S.A\",\n        \"ativo\": true\n\n\n}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "foto",
+											"contentType": "image/jpeg",
+											"type": "file",
+											"src": "/C:/Users/SERRATEC/Downloads/tiara.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/produtos/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"produtos",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualização completa de categória",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5NTgwNjQsImV4cCI6MTc0OTA0NDQ2NH0.SK5Z8atViU-Eq2GVS8NV_gSCuJ5CBzAHKbqBrW7j81w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"ROUPA INFANTIL\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/categorias/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"categorias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluindo uma categoria",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5NTgwNjQsImV4cCI6MTc0OTA0NDQ2NH0.SK5Z8atViU-Eq2GVS8NV_gSCuJ5CBzAHKbqBrW7j81w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"ROUPA INFANTIL\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/categorias/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"categorias",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ACESSO MÉDIO",
+					"item": [
+						{
+							"name": "RELATÓRIO",
+							"item": [
+								{
+									"name": "Relatório de Clientes por Endereço",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5NTgwNjQsImV4cCI6MTc0OTA0NDQ2NH0.SK5Z8atViU-Eq2GVS8NV_gSCuJ5CBzAHKbqBrW7j81w",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+										},
+										"url": {
+											"raw": "localhost:8080/cliente/quantidadePorEstadoECidade",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"cliente",
+												"quantidadePorEstadoECidade"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Listar clientes por Cidade",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/cliente/buscarPorCidade/teresópolis",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"cliente",
+												"buscarPorCidade",
+												"teresópolis"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Listar clientes por Estado",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "localhost:8080/cliente/buscarPorEstado/rj",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"cliente",
+												"buscarPorEstado",
+												"rj"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Cadastra de funcionário",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Maria Aragão\",\r\n  \"cpf\": \"158.961.575-22\",\r\n  \"dataDeNascimento\": \"2025-06-03\",\r\n  \"genero\": \"FEMININO\",\r\n  \"telefone\": \"(20) 92143-3002\",\r\n  \"cargo\": \"PRESIDENTE\",\r\n  \"email\": \"mariaaragao2742@gmail.com\",\r\n  \"senha\": \"Maria@2742\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/funcionario/cadastro",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"cadastro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Desativar conta de um funcionário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/desativarConta/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"desativarConta",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reativa conta de um funcionário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/ativarConta/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"ativarConta",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gestor atualiza parcialmente um funcionário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Njk5NjAsImV4cCI6MTc0OTA1NjM2MH0.2cRwIMyZpIxmawSFz1r6zjTJ9Q5geCuLACTRcaTWgNY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Karen Lessa Fofa\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/funcionario/atualizacaoParcialGestor/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"atualizacaoParcialGestor",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar todos os funcionários",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/listarFuncionarios",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"listarFuncionarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar funcionários pelo nome",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/listarPorNome/maria",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"listarPorNome",
+										"maria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ACESSO ALTO",
+					"item": [
+						{
+							"name": "Gestor atualiza funcionário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Karen Lessa\",\r\n  \"cpf\": \"125.658.987-85\",\r\n  \"dataDeNascimento\": \"2000-06-03\",\r\n  \"cargo\": \"PRESIDENTE\",\r\n  \"genero\": \"FEMININO\",\r\n  \"telefone\": \"(21) 95874-6825\",\r\n  \"email\": \"karen@gmail.com\",\r\n  \"senha\": \"Karen@1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/funcionario/atualizarFuncionario/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"atualizarFuncionario",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar funcionários ativos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/listarContasAtivas",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"listarContasAtivas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar funcionários desativados",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/listarContasDesativadas",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"listarContasDesativadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar funcionários pelo cargo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/listarPeloCargo/PRESIDENTE",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"listarPeloCargo",
+										"PRESIDENTE"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista funcionários pelo Nível de Acesso",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/funcionario/listarPeloNivelAcesso/TOTAL",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"listarPeloNivelAcesso",
+										"TOTAL"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscar funcionário pelo Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5MTg1ODQsImV4cCI6MTc0OTAwNDk4NH0.uEGJSUr6LKM0jTiXojHUQh3HIBeIstAvaKEjv37NUwg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/funcionario/buscarPorId/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"buscarPorId",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "ACESSO TOTAL",
+					"item": [
+						{
+							"name": "Excluir um Cliente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX05FTkhVTSJdLCJzdWIiOiJtYXJpYS5hcmFnYW9AYWx1bm8uc2VycmF0ZWMub3JnIiwiaWF0IjoxNzQ4OTE1NzQwLCJleHAiOjE3NDkwMDIxNDB9.Sa2QM9vv3uirOPp052SFHLh4sUnJehEsXCVvBrYZs3I",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"telefone\": \"(21) 96859-8595\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/cliente/excluirCliente/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cliente",
+										"excluirCliente",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Excluir um Funcionário",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX1RPVEFMIl0sInN1YiI6Im1hcmlhYXJhZ2FvMjc0MkBnbWFpbC5jb20iLCJpYXQiOjE3NDg5Njk5NjAsImV4cCI6MTc0OTA1NjM2MH0.2cRwIMyZpIxmawSFz1r6zjTJ9Q5geCuLACTRcaTWgNY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Maria Aragão\",\r\n  \"cpf\": \"158.961.575-22\",\r\n  \"dataDeNascimento\": \"2025-06-03\",\r\n  \"genero\": \"FEMININO\",\r\n  \"telefone\": \"(20) 92143-3002\",\r\n  \"cargo\": \"PRESIDENTE\",\r\n  \"email\": \"mariaaragao2742@gmail.com\",\r\n  \"senha\": \"Maria@2742\"\r\n}"
+								},
+								"url": {
+									"raw": "localhost:8080/funcionario/deletarFuncionario/7",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"funcionario",
+										"deletarFuncionario",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
