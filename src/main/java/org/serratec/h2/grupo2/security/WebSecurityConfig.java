@@ -1,5 +1,7 @@
 package org.serratec.h2.grupo2.security;
 
+import java.util.Arrays;
+
 import org.serratec.h2.grupo2.exception.CustomAccessDeniedHandler;
 import org.serratec.h2.grupo2.exception.CustomAuthenticationEntryPoint;
 import org.serratec.h2.grupo2.security.tokenAcesso.JwtAuthFilter;
@@ -16,6 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableMethodSecurity
@@ -34,6 +39,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	    return http
             .csrf(csrf -> csrf.disable())
+            .cors((cors) -> cors.configurationSource(corsConfigurationsource()))
 			.sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
@@ -105,7 +111,15 @@ public class WebSecurityConfig {
         .build();
 	}
 	
-	
+	@Bean
+	CorsConfigurationSource corsConfigurationsource() {
+		CorsConfiguration corsConfiguraion = new CorsConfiguration();
+		corsConfiguraion.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+		corsConfiguraion.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", corsConfiguraion.applyPermitDefaultValues());
+		return source;
+	}
 	
 	@Bean
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
