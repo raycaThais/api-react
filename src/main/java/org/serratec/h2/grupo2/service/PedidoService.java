@@ -168,6 +168,8 @@ public class PedidoService {
 		        item.setQuantidade(novaQuantidade);
 		        item.setPrecoTotal(item.getPrecoUnitario().multiply(BigDecimal.valueOf(novaQuantidade)));
 		        itemRepository.save(item);
+		        produto.setEstoque(produto.getEstoque() - quantidade);// adc
+		        produtoRepository.save(produto);// adc
 	
 		    } else {
 		        if (quantidade > produto.getEstoque()) {
@@ -188,6 +190,8 @@ public class PedidoService {
 		        item.setPrecoTotal(precoUnitario.multiply(BigDecimal.valueOf(quantidade)));
 		        pedido.getItens().add(item);
 		        itemRepository.save(item);
+		        produto.setEstoque(produto.getEstoque() - quantidade); 
+		        produtoRepository.save(produto);
 		    }
 	
 	    // RECALCULO DO FRETE E VALOR TOTAL
