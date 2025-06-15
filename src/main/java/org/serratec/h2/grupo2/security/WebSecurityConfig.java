@@ -66,6 +66,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/pedidos/listar-pedidos-finalizados").hasAnyRole("NENHUM")
                 .requestMatchers("/pedidos/listar-pedidos-cancelados").hasAnyRole("NENHUM")
                 .requestMatchers("/cliente/atualizacaoParcial").hasAnyRole("NENHUM")
+                .requestMatchers("/cliente/me").hasAnyRole("NENHUM")
                 
                 //BAIXO NIVEL DE ACESSO
                 .requestMatchers("/funcionario/atualizarCadastro").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
@@ -106,7 +107,7 @@ public class WebSecurityConfig {
                 
                 //NIVEL DE ACESSO TOTAL
                 .requestMatchers("/funcionario/deletarFuncionario/**").hasAnyRole("TOTAL")
-                .requestMatchers("/cliente/excluirCliente/**").hasAnyRole("TOTAL")
+                .requestMatchers("/cliente/excluirCliente/**").hasAnyRole("NENHUM")
 
 
                 .anyRequest().permitAll())
