@@ -319,6 +319,13 @@ public class ClienteService {
 			return mapper.toListResponse(clientes);
 		}
 		
+		//
+		public ClienteResponseDto buscarPorEmail(String email) {
+		    Cliente cliente = repository.findByContaEmail(email)
+		        .orElseThrow(() -> new RuntimeException("Cliente não encontrado com email: " + email));
+		    return mapper.toResponse(cliente);
+		}
+		
 		//LISTAR A QUANTIDADE DE CLIENTES QUE HÁ NO ESTADO E EM CADA CIDADE DE CADA ESTADO
 		 public List<QuantidadeEstadoDto> listarQuantidadeClientes() {
         List<Object[]> resultados = repository.buscarQuantidadePorEstadoECidade();

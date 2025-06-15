@@ -1,15 +1,20 @@
 package org.serratec.h2.grupo2.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.serratec.h2.grupo2.DTO.cliente.ClienteRequestDto;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteResponseDto;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteUpdateDto;
 import org.serratec.h2.grupo2.DTO.cliente.quantidadeClientes.MensagemComClienteResponseDto;
 import org.serratec.h2.grupo2.DTO.cliente.quantidadeClientes.QuantidadeEstadoDto;
+import org.serratec.h2.grupo2.domain.Cliente;
+import org.serratec.h2.grupo2.repository.ClienteRepository;
 import org.serratec.h2.grupo2.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,6 +36,9 @@ public class ClienteController {
 
     @Autowired
     private ClienteService service;
+    
+    @Autowired
+    private ClienteRepository repository;
 
     //CADASTRO DE CLIENTE - SOMENTE O PRÓPRIO CLIENTE PODE SE CADASTRAR
     @PostMapping("/cadastro")
@@ -57,6 +65,25 @@ public class ClienteController {
     }
 
     //CLIENTE ATUALIZA O ENDEREÇO - PARCIAL
+    @GetMapping("/me")
+    public ResponseEntity<ClienteResponseDto> getClienteLogado(@AuthenticationPrincipal UserDetails userDetails) {
+        String email = userDetails.getUsername(); // Pega o email do token
+        Optional<Cliente> cliente = repository.findByContaEmail(email);
+        if (cliente.isPresent()) {
+        Cliente clienteLogado = cliente.get();
+        ClienteResponseDto response = new ClienteResponseDto();
+		
+		response.setCodigo(clienteLogado.getId());
+		response.setNome(clienteLogado.getNome());
+		response.setCpf(clienteLogado.getCpf());
+		response.setTelefone(clienteLogado.getTelefone());
+		response.setDataDeNascimento(clienteLogado.getDataDeNascimento());
+		response.setEmail(clienteLogado.getConta().getEmail());
+		response.setEndereco(clienteLogado.getEndereco());
+		return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.notFound().build();
+    }
     
     //FUNCIONÁRIO ATUALIZA O ENDEREÇO DO CLIENTE
 
