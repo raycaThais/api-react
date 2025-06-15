@@ -23,4 +23,6 @@ public class ContaService  {
     	String token = jwtService.gerarToken(userDetails);
     	return token;
     }
+       
+    
 }

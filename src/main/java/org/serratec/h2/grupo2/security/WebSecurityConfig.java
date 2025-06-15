@@ -52,7 +52,9 @@ public class WebSecurityConfig {
 		
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login").permitAll()
-
+                .requestMatchers("/esqueciSenha/solicitarRecuperacao").permitAll()
+                .requestMatchers("/esqueciSenha/redefinirSenha").permitAll()
+                
                 //ACESSO DO CLIENTE
                 .requestMatchers("/pedidos/adicionar").hasAnyRole("NENHUM")
                 .requestMatchers("/pedidos/finalizar").hasAnyRole("NENHUM")
