@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
-	Optional<Cliente> findByContaEmail (String email);
+	Optional<Cliente> findByContaEmail (String email); 
 	
 	List<Cliente> findByNomeContainingIgnoreCase (String nome);
 	

@@ -205,4 +205,26 @@ public class EmailService {
 	    mailSender.send(mensagem);
 	}
 	
+	
+	/////////////////////////////////////////// Pode melhorar o email depois
+	public void sendCodigoRecuperacao(String para, String codigo) {
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("ecomerce.grupo2@gmail.com");
+		message.setTo(para);
+		message.setSubject("Recuperação de Senha");
+		String texto = """
+				Olá!
+
+				Recebemos uma solicitação para redefinir sua senha.
+
+				Seu código de verificação é: %s
+
+				Atenciosamente,  
+				Equipe E-Commerce Grupo 03
+				""".formatted(codigo);
+
+		message.setText(texto);
+		mailSender.send(message);
+}
+
 }

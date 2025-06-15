@@ -1,6 +1,7 @@
 package org.serratec.h2.grupo2.security;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.serratec.h2.grupo2.exception.CustomAccessDeniedHandler;
 import org.serratec.h2.grupo2.exception.CustomAuthenticationEntryPoint;
@@ -51,7 +52,9 @@ public class WebSecurityConfig {
 		
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login").permitAll()
-
+                .requestMatchers("/esqueciSenha/solicitarRecuperacao").permitAll()
+                .requestMatchers("/esqueciSenha/redefinirSenha").permitAll()
+                
                 //ACESSO DO CLIENTE
                 .requestMatchers("/pedidos/adicionar").hasAnyRole("NENHUM")
                 .requestMatchers("/pedidos/finalizar").hasAnyRole("NENHUM")
@@ -114,12 +117,14 @@ public class WebSecurityConfig {
 	
 	@Bean
 	CorsConfigurationSource corsConfigurationsource() {
-		CorsConfiguration corsConfiguraion = new CorsConfiguration();
-		corsConfiguraion.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
-		corsConfiguraion.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", corsConfiguraion.applyPermitDefaultValues());
-		return source;
+	    CorsConfiguration corsConfiguraion = new CorsConfiguration();
+	    corsConfiguraion.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+	    corsConfiguraion.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "PATCH"));
+	    corsConfiguraion.setAllowedHeaders(List.of("*"));
+	    corsConfiguraion.setAllowCredentials(true); 
+	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	    source.registerCorsConfiguration("/**", corsConfiguraion);
+	    return source;
 	}
 	
 	@Bean
