@@ -16,6 +16,7 @@ import org.serratec.h2.grupo2.repository.ClienteRepository;
 import org.serratec.h2.grupo2.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
 
@@ -146,6 +148,15 @@ public class ClienteController {
     //EXCLUÍ CLIENTE PERMANENTEMENTE
     @DeleteMapping("/excluirCliente/{id}")
     public ResponseEntity<String> excluirCliente(@PathVariable Long id) {
+        return service.excluirCliente(id);
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> excluirClienteLogado() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        Cliente cliente = repository.findByContaEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado."));
+        Long id = cliente.getId();
+
         return service.excluirCliente(id);
     }
 }

@@ -67,6 +67,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/pedidos/listar-pedidos-cancelados").hasAnyRole("NENHUM")
                 .requestMatchers("/cliente/atualizacaoParcial").hasAnyRole("NENHUM")
                 .requestMatchers("/cliente/me").hasAnyRole("NENHUM")
+                .requestMatchers("/cliente/delete").hasAnyRole("NENHUM")
                 
                 //BAIXO NIVEL DE ACESSO
                 .requestMatchers("/funcionario/atualizarCadastro").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
@@ -84,7 +85,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/pedidos/finalizados").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
                 .requestMatchers("/pedidos/em-entrega").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
                 .requestMatchers("/pedidos/cancelados").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
-                .requestMatchers("/pedidos/listar-pedidos-andamento").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
+                .requestMatchers("/pedidos/listar-pedidos-andamento").hasAnyRole("NENHUM","BAIXO", "MEDIO", "ALTO", "TOTAL")
                 .requestMatchers(HttpMethod.DELETE, "/produtos/**").hasAnyRole("BAIXO", "MEDIO", "ALTO", "TOTAL")
 
                 

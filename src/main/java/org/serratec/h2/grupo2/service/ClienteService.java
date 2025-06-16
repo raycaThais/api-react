@@ -400,14 +400,4 @@ public class ClienteService {
 		return ResponseEntity.ok("Conta excluída com sucesso!");
 	}
 	
-	/*
-	//PATCH PARA O CEP DO CLIENTE
-	public void atualizarEnderecoPorCep(String email, EnderecoUpdateDto dto) {
-	    Cliente cliente = repository.findByContaEmail(email)
-	        .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-	    
-	    cliente.getEndereco().setCep(dto.getCep());
-
-	    repository.save(cliente);
-	}*/
 }
