@@ -18,33 +18,42 @@ public class EmailService {
 	    String link = "http://localhost:8080/cliente/ativarConta?email=" + email + "&token=" + token;
 
 	    String corpo = String.format(
-	        """
-	        Olá %s, tudo bem?
+	    		 """
+	        
+	                         🎉 BEM-VINDO AO NOSSO ECOSSISTEMA! 🎉
+	       
 
-	        Seja muito bem-vindo(a) ao nosso sistema! 🎉
+	            Olá, %s,
 
-	        Para concluir seu cadastro e ativar sua conta, por favor clique no link abaixo:
+	            Estamos muito felizes em tê-lo como parte da nossa comunidade!
 
-	        ➤ %s
+	            ✨ Para ativar sua conta e começar a explorar todos os recursos,
+	            clique no botão abaixo:
 
-	        Caso não consiga clicar diretamente no link, você também pode copiar e colar o endereço no seu navegador.
+	            [ ATIVAR MINHA CONTA ]
+	            %s
 
-	        Se preferir ativar manualmente, acesse:
-	        ➤ http://localhost:8080/cliente/ativarConta/seuemail/seuToken
-	        e utilize este código de ativação:%s
+	            Ou utilize este código de ativação:
+	            ┌──────────────────────────────────────┐
+	            │ %s                                   │
+	            └──────────────────────────────────────┘
 
-	        Se você não realizou esse cadastro, pode ignorar este e-mail com segurança.
+	            ⏳ Este link expira em 15 minutos
+	            🔒 Sua segurança é importante para nós
 
-	        Atenciosamente,
-	        Equipe de Suporte
-	        """, nomeUsuario, link, token
+	            Caso não tenha solicitado este cadastro, por favor ignore este e-mail.
+
+	            Atenciosamente,
+	            Equipe Grupo 3
+	            ==============================================
+	            """, nomeUsuario, link, token
 	    );
 
 	    SimpleMailMessage mensagem = new SimpleMailMessage();
 	    mensagem.setTo(email);
 	    mensagem.setSubject("Ativação da Conta - Confirme seu cadastro");
 	    mensagem.setText(corpo);
-	    mensagem.setFrom("ecomerce.grupo2@gmail.com");
+	    mensagem.setFrom("ecomerce.grupo3@gmail.com");
 
 	    mailSender.send(mensagem);
 	}
@@ -200,31 +209,9 @@ public class EmailService {
 	    mensagem.setTo(email);
 	    mensagem.setSubject("Cancelamento de Pedido Confirmado 😕");
 	    mensagem.setText(corpo.toString());
-	    mensagem.setFrom("ecomerce.grupo2@gmail.com");
+	    mensagem.setFrom("ecomerce.grupo3@gmail.com");
 
 	    mailSender.send(mensagem);
 	}
 	
-	
-	/////////////////////////////////////////// Pode melhorar o email depois
-	public void sendCodigoRecuperacao(String para, String codigo) {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("ecomerce.grupo2@gmail.com");
-		message.setTo(para);
-		message.setSubject("Recuperação de Senha");
-		String texto = """
-				Olá!
-
-				Recebemos uma solicitação para redefinir sua senha.
-
-				Seu código de verificação é: %s
-
-				Atenciosamente,  
-				Equipe E-Commerce Grupo 03
-				""".formatted(codigo);
-
-		message.setText(texto);
-		mailSender.send(message);
-}
-
 }

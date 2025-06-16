@@ -49,6 +49,15 @@ public class ClienteMapper {
 		return response;
 	}
 	
+	public void updateEnderecoFromCep(Endereco enderecoExistente, EnderecoUpdateDto update) {
+	    if (update.getCep() != null) enderecoExistente.setCep(update.getCep());
+	    if (update.getRua() != null) enderecoExistente.setRua(update.getRua());
+	    if (update.getBairro() != null) enderecoExistente.setBairro(update.getBairro());
+	    if (update.getCidade() != null) enderecoExistente.setCidade(update.getCidade());
+	    if (update.getEstado() != null) enderecoExistente.setEstado(update.getEstado());
+	    if (update.getNumero() != null) enderecoExistente.setNumero(update.getNumero());
+	}
+	
 	public Endereco toEndereco (EnderecoUpdateDto update) {
 		Endereco endereco = new Endereco();
 		
@@ -70,8 +79,4 @@ public class ClienteMapper {
 			
 		return listResponse;
 	}
-	
-
-	
-	
 }

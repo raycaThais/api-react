@@ -1,11 +1,14 @@
 package org.serratec.h2.grupo2.controller;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 import org.serratec.h2.grupo2.DTO.cliente.ClienteRequestDto;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteResponseDto;
+import org.serratec.h2.grupo2.DTO.cliente.ClienteUpdateCompletDto;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteUpdateDto;
+import org.serratec.h2.grupo2.DTO.cliente.EnderecoUpdateDto;
 import org.serratec.h2.grupo2.DTO.cliente.quantidadeClientes.MensagemComClienteResponseDto;
 import org.serratec.h2.grupo2.DTO.cliente.quantidadeClientes.QuantidadeEstadoDto;
 import org.serratec.h2.grupo2.domain.Cliente;
@@ -58,13 +61,12 @@ public class ClienteController {
         return service.atualizacaoCadastroFuncionario(id, request);
     }
 
-    //CLIENTE FAZ UMA ATUALIZAÇÃO PARCIAL DOS DADOS
     @PatchMapping("/atualizacaoParcial")
-    public ClienteResponseDto atualizacaoParcial(@RequestBody ClienteUpdateDto request) {
+    public ClienteResponseDto atualizacaoParcial(@RequestBody ClienteUpdateCompletDto request) {
         return service.atualizacaoParcial(request);
     }
 
-    //CLIENTE ATUALIZA O ENDEREÇO - PARCIAL
+    //CLIENTE ATUALIZA O PERFIl - PARCIAL
     @GetMapping("/me")
     public ResponseEntity<ClienteResponseDto> getClienteLogado(@AuthenticationPrincipal UserDetails userDetails) {
         String email = userDetails.getUsername(); // Pega o email do token

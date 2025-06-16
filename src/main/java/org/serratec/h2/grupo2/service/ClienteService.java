@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteRequestDto;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteResponseDto;
 import org.serratec.h2.grupo2.DTO.cliente.ClienteUpdateDto;
+import org.serratec.h2.grupo2.DTO.cliente.ClienteUpdateCompletDto;
 import org.serratec.h2.grupo2.DTO.cliente.EnderecoUpdateDto;
 import org.serratec.h2.grupo2.DTO.cliente.quantidadeClientes.MensagemComClienteResponseDto;
 import org.serratec.h2.grupo2.DTO.cliente.quantidadeClientes.QuantidadeCidadeDto;
@@ -19,6 +20,7 @@ import org.serratec.h2.grupo2.domain.Cliente;
 import org.serratec.h2.grupo2.domain.Conta;
 import org.serratec.h2.grupo2.domain.Endereco;
 import org.serratec.h2.grupo2.enuns.NivelAcesso;
+import org.serratec.h2.grupo2.exception.ClienteCepException;
 import org.serratec.h2.grupo2.mapper.ClienteMapper;
 import org.serratec.h2.grupo2.repository.ClienteRepository;
 import org.serratec.h2.grupo2.security.tokenAcesso.TokenAtivacaoConta;
@@ -179,7 +181,7 @@ public class ClienteService {
 		
 	
 		//ATUALIZAÇÃO PARCIAL FEITA PELO CLIENTE
-		public ClienteResponseDto atualizacaoParcial(ClienteUpdateDto update) {
+		public ClienteResponseDto atualizacaoParcial(ClienteUpdateCompletDto update  ) {
 		    String email = SecurityContextHolder.getContext().getAuthentication().getName();
 		    Cliente cliente = repository.findByContaEmail(email)
 		        .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado."));
@@ -216,6 +218,42 @@ public class ClienteService {
 		        cliente.getConta().setSenha(update.getSenha());
 		        foiAtualizado = true;
 		    }
+
+		    EnderecoUpdateDto updateEndereco = update.getEndereco();
+
+		    if (updateEndereco != null) {
+		        Endereco endereco = cliente.getEndereco();
+		        if (endereco == null) {
+		            endereco = new Endereco();
+		            cliente.setEndereco(endereco);
+		        }
+
+		        if (updateEndereco.getCep() != null && !updateEndereco.getCep().isBlank()) {
+		            endereco.setCep(updateEndereco.getCep());
+		            foiAtualizado = true;
+		        }
+		        if (updateEndereco.getRua() != null && !updateEndereco.getRua().isBlank()) {
+		            endereco.setRua(updateEndereco.getRua());
+		            foiAtualizado = true;
+		        }
+		        if (updateEndereco.getNumero() != null && !updateEndereco.getNumero().isBlank()) {
+		            endereco.setNumero(updateEndereco.getNumero());
+		            foiAtualizado = true;
+		        }
+		        if (updateEndereco.getBairro() != null && !updateEndereco.getBairro().isBlank()) {
+		            endereco.setBairro(updateEndereco.getBairro());
+		            foiAtualizado = true;
+		        }
+		        if (updateEndereco.getCidade() != null && !updateEndereco.getCidade().isBlank()) {
+		            endereco.setCidade(updateEndereco.getCidade());
+		            foiAtualizado = true;
+		        }
+		        if (updateEndereco.getEstado() != null && !updateEndereco.getEstado().isBlank()) {
+		            endereco.setEstado(updateEndereco.getEstado());
+		            foiAtualizado = true;
+		        }
+		    }
+
 
 		    if (!foiAtualizado) {
 		        throw new IllegalArgumentException("Nenhuma alteração válida foi informada.");
@@ -362,4 +400,14 @@ public class ClienteService {
 		return ResponseEntity.ok("Conta excluída com sucesso!");
 	}
 	
+	/*
+	//PATCH PARA O CEP DO CLIENTE
+	public void atualizarEnderecoPorCep(String email, EnderecoUpdateDto dto) {
+	    Cliente cliente = repository.findByContaEmail(email)
+	        .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+	    
+	    cliente.getEndereco().setCep(dto.getCep());
+
+	    repository.save(cliente);
+	}*/
 }
