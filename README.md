@@ -11,12 +11,12 @@ Agradecemos imensamente pela base sólida e bem construída deixada pelo Grupo 2
 ## 👩‍💻 Desenvolvedores(as) Originais - Grupo 2  
 Essa API foi criada inicialmente pelos talentos incríveis:  
 
-🌸 Maria Eduarda dos Santos Pereira Aragão – Confirmação de conta por e-mail  
-🌼 Dandara Lima Ferreira – Endpoint de produtos em promoção  
-🌷 Karen Lessa da Silva Menezes – Cálculo de frete  
-🌻 Cauã da Silva Pacheco – Controle de autenticação e autorização  
-🌺 Lucas José do Prado Souza – Relatório de clientes por UF/cidade  
-🌹 Marlos Salles Bianna – Inclusão de foto no cadastro de produtos  
+🌸 Maria Eduarda dos Santos Pereira Aragão  
+🌼 Dandara Lima Ferreira 
+🌷 Karen Lessa da Silva Menezes   
+🌻 Cauã da Silva Pacheco  
+🌺 Lucas José do Prado Souza
+🌹 Marlos Salles Bianna 
 
 [Repositório original](https://github.com/trabalhoGrupo2/Ecomerce-API?tab=readme-ov-file)
 
