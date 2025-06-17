@@ -1,6 +1,6 @@
 
-# 🛒💖 API E-commerce Adaptada | Grupo React 💖🛍️  
-Esta API incrível foi originalmente desenvolvida com muito carinho pela **Equipe Grupo2**, como parte de um projeto completo de e-commerce.  
+# 🛒💖 API E-commerce Adaptada | Grupo 3 - React 💖🛍️  
+Esta API incrível foi originalmente desenvolvida com muito carinho pela **Equipe Grupo 2**, como parte de um projeto completo de e-commerce.  
 
 🎉 Com permissão, nossa equipe reutilizou e adaptou esse projeto para integrá-lo ao nosso sistema front-end feito em React.  
 
@@ -8,7 +8,7 @@ Agradecemos imensamente pela base sólida e bem construída deixada pelo Grupo 2
 
 ---
 
-## 👩‍💻 Desenvolvedores(as) Originais - Grupo2  
+## 👩‍💻 Desenvolvedores(as) Originais - Grupo 2  
 Essa API foi criada inicialmente pelos talentos incríveis:  
 
 🌸 Maria Eduarda dos Santos Pereira Aragão – Confirmação de conta por e-mail  
