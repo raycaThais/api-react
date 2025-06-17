@@ -18,7 +18,7 @@ Essa API foi criada inicialmente pelos talentos incríveis:
 🌺 Lucas José do Prado Souza – Relatório de clientes por UF/cidade  
 🌹 Marlos Salles Bianna – Inclusão de foto no cadastro de produtos  
 
-Repositório original [https://github.com/trabalhoGrupo2/Ecomerce-API?tab=readme-ov-file]
+[Repositório original](https://github.com/trabalhoGrupo2/Ecomerce-API?tab=readme-ov-file)
 
 ---
 
@@ -36,7 +36,7 @@ Para atender às necessidades do projeto com React, realizamos as seguintes muda
 ## 💬 Considerações finais
 Esta API é fruto de muito esforço conjunto — tanto do grupo original quanto da nossa equipe, que buscou preservar a essência do projeto e, ao mesmo tempo, adaptá-lo às nossas necessidades.
 
-Com respeito e gratidão ao **Grupo2**, seguimos desenvolvendo com carinho 💖
+Com respeito e gratidão ao **Grupo 2**, seguimos desenvolvendo com carinho 💖
 
 ---
 
